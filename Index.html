@@ -1,0 +1,223 @@
+index.html<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Video Creator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #10111b;
+  color: white;
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 25px;
+}
+
+h1 {
+  text-align: center;
+  color: #a78bfa;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.panel {
+  background: #1d1e2c;
+  padding: 22px;
+  border-radius: 15px;
+  border: 1px solid #36364c;
+}
+
+label {
+  display: block;
+  margin: 17px 0 8px;
+  font-weight: bold;
+}
+
+textarea, select {
+  width: 100%;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px solid #44445b;
+  background: #121320;
+  color: white;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(90deg,#7c3aed,#2563eb);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #292a3b;
+  border-radius: 9px;
+  display: none;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  text-align: center;
+  color: #888;
+  margin-top: 25px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎬 AI VIDEO CREATOR</h1>
+
+<p class="subtitle">
+Turn your imagination into videos with AI
+</p>
+
+<div class="panel">
+
+<form id="videoForm">
+
+<label>Describe Your Video</label>
+
+<textarea id="prompt"
+placeholder="Example: A beautiful cinematic sunset over the ocean with flying birds..."
+required></textarea>
+
+<label>Video Style</label>
+
+<select id="style">
+<option value="Cinematic">Cinematic</option>
+<option value="Realistic">Realistic</option>
+<option value="Anime">Anime</option>
+<option value="Cartoon">Cartoon</option>
+<option value="3D Animation">3D Animation</option>
+</select>
+
+<label>Video Duration</label>
+
+<select id="duration">
+<option value="15 seconds">15 Seconds</option>
+<option value="30 seconds">30 Seconds</option>
+<option value="60 seconds">60 Seconds</option>
+</select>
+
+<label>Video Format</label>
+
+<select id="format">
+<option value="16:9">YouTube (16:9)</option>
+<option value="9:16">Shorts / Reels (9:16)</option>
+<option value="1:1">Square (1:1)</option>
+</select>
+
+<label>Voiceover</label>
+
+<select id="voice">
+<option value="Male">Male Voice</option>
+<option value="Female">Female Voice</option>
+<option value="No Voice">No Voice</option>
+</select>
+
+<button type="submit">
+✨ Generate Video
+</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<p class="footer">
+AI Video Creator • Powered by AI
+</p>
+
+</div>
+
+<script>
+document.getElementById("videoForm")
+.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const prompt =
+    document.getElementById("prompt").value;
+
+  const style =
+    document.getElementById("style").value;
+
+  const duration =
+    document.getElementById("duration").value;
+
+  const format =
+    document.getElementById("format").value;
+
+  const voice =
+    document.getElementById("voice").value;
+
+  const result = document.getElementById("result");
+
+  result.style.display = "block";
+
+  result.innerHTML = `
+    <h3>✅ Video Request Ready!</h3>
+    <p><b>Your Prompt:</b> ${escapeHTML(prompt)}</p>
+    <p><b>Style:</b> ${style}</p>
+    <p><b>Duration:</b> ${duration}</p>
+    <p><b>Format:</b> ${format}</p>
+    <p><b>Voice:</b> ${voice}</p>
+    <hr>
+    <p>🎬 Your video settings are ready.
+    Connect the AI video generation engine
+    to create your actual video.</p>
+  `;
+});
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[char];
+  });
+}
+</script>
+
+</body>
+</html>
